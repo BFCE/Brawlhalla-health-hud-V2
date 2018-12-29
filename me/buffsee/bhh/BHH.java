@@ -17,6 +17,7 @@ public class BHH extends Thread {
 
 	@Override
 	public void run() {
+		Thread.yield();
 		Robot robot = null;
 
 		try {
