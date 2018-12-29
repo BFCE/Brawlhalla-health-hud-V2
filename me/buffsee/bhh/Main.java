@@ -20,6 +20,9 @@ public class Main {
 		BHH bhhthread = new BHH();
 		bhhthread.start();
 		
+		TaskbarHider taskbarhider = new TaskbarHider();
+		taskbarhider.hideTaskbar();
+		
 		
 		JCheckBox BHHCheckBox = new JCheckBox();
 		BHHCheckBox.setLocation(50, 0);
@@ -30,10 +33,10 @@ public class Main {
 			public void actionPerformed(ActionEvent e) {
 				if(bhhthread.bhh.isVisible()) {
 					bhhthread.hideWindow();
-					bhhthread.startExplorer();
+					//bhhthread.startExplorer();
 				} else {
 					bhhthread.showWindow();
-					bhhthread.stopExplorer();
+					//bhhthread.stopExplorer();
 				}
 			}
 		});
@@ -58,7 +61,7 @@ public class Main {
 		    public void windowClosing(WindowEvent e)
 		    {
 		    	if(bhhthread.bhh.isVisible()) {
-		    		bhhthread.startExplorer();
+		    		//bhhthread.startExplorer();
 		    	}
 		    }
 		});
