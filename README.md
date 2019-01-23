@@ -10,7 +10,7 @@ this version runs faster due to the replacement of `getPixelColor`, is coded muc
 
 ![picture](img/2s.png)
 
-## The program is currently terminated with ESC, by caution, keyboard players. I'll probably try to change this to a different button like F2 in the future.
+## You can terminate the program by pressing F2.
 
 #[All-downloads](https://bitbucket.org/BFCEHF/brawlhalla-health-hud-v2.0/downloads/)
 
