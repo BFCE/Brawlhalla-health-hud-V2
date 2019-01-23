@@ -15,9 +15,12 @@ import javax.swing.SwingConstants;
 public class BHH extends Thread {
 	public JFrame bhh = new JFrame("BHH");
 
+	private boolean twos = false;
+	
 	@Override
 	public void run() {
 		Thread.yield();
+		
 		Robot robot = null;
 
 		try {
@@ -32,9 +35,14 @@ public class BHH extends Thread {
 		bhh.add(healthleft);
 		bhh.setUndecorated(true);
 		bhh.setOpacity(0.8f);
-		bhh.setSize(300, 100);
+		bhh.setSize(300, 50);
+		System.out.println("heres ur console bud");
 		Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();
-		bhh.setLocation((int) (screensize.getWidth()) - 300, (int) screensize.getHeight() / 10);
+		if(this.isTwos())
+			bhh.setLocation((int) (screensize.getWidth()) - bhh.getWidth(), (int) screensize.getHeight() / 5);
+		else
+			bhh.setLocation((int) (screensize.getWidth()) - bhh.getWidth(), (int) screensize.getHeight() / 10);
+		
 		bhh.setAlwaysOnTop(true);
 
 		Rectangle screenRectLeft = new Rectangle((int) (screensize.getWidth() / 1.1),
@@ -44,12 +52,33 @@ public class BHH extends Thread {
 				((int) screensize.getHeight() / 12) - 1, (int) (screensize.getWidth() / 1.04) + 1,
 				(int) screensize.getHeight() / 12);
 
+		Rectangle screenRectBottomLeft = new Rectangle((int) (screensize.getWidth() / 1.1),
+				(int) (screensize.getHeight() / 5.5) - 1, (int) (screensize.getWidth() / 1.1) + 1,
+				(int) (screensize.getHeight() / 5.5));
+		Rectangle screenRectBottomRight = new Rectangle((int) (screensize.getWidth() / 1.04),
+				(int)(screensize.getHeight() / 5.5) - 1, (int) (screensize.getWidth() / 1.04) + 1,
+				(int) (screensize.getHeight() / 5.5));
+		
+		
 		while (true) {
 			if (bhh.isVisible()) {
 				String toplefthealth = String.valueOf((int) this.getHealthFromPixel(0, 0, robot, screenRectLeft));
 				String toprighthealth = String.valueOf((int) this.getHealthFromPixel(0, 0, robot, screenRectRight));
+				if(this.isTwos()) {
+					String topleftbottomhealth = String.valueOf((int) this.getHealthFromPixel(0, 0, robot, screenRectBottomLeft));
+					String toprightbottomhealth = String.valueOf((int) this.getHealthFromPixel(0, 0, robot, screenRectBottomRight));
+					healthleft.setText("<html>" + toplefthealth + " | " + toprighthealth + " <br>" +
+					topleftbottomhealth  + " | " + toprightbottomhealth + "</br></html>");
+				} else
+					healthleft.setText(toplefthealth + " | " + toprighthealth + " ");
+				
+				
+				bhh.pack();
+				if(this.isTwos())
+					bhh.setLocation((int) (screensize.getWidth()) - bhh.getWidth(), (int) screensize.getHeight() / 5);
+				else
+					bhh.setLocation((int) (screensize.getWidth()) - bhh.getWidth(), (int) screensize.getHeight() / 10);
 
-				healthleft.setText(toplefthealth + " | " + toprighthealth);
 			}
 			try {
 				Thread.sleep(200);
@@ -108,6 +137,14 @@ public class BHH extends Thread {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public boolean isTwos() {
+		return twos;
+	}
+
+	public void setTwos(boolean twos) {
+		this.twos = twos;
 	}
 
 }
