@@ -34,7 +34,7 @@ public class BHH extends Thread {
 		bhh.setUndecorated(true);
 		bhh.setOpacity(0.8f);
 		bhh.setSize(300, 50);
-		System.out.println("heres ur console bud");
+		
 		Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();
 		if(this.isTwos())
 			bhh.setLocation((int) (screensize.getWidth()) - bhh.getWidth(), (int) screensize.getHeight() / 5);

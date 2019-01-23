@@ -2,16 +2,38 @@ package me.buffsee.bhh;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Map.Entry;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+import lc.kra.system.keyboard.GlobalKeyboardHook;
+import lc.kra.system.keyboard.event.GlobalKeyAdapter;
+import lc.kra.system.keyboard.event.GlobalKeyEvent;
+
 public class Main {
 	
 	public static void main(String[] args) {
+		// might throw a UnsatisfiedLinkError if the native library fails to load or a RuntimeException if hooking fails 
+		GlobalKeyboardHook keyboardHook = new GlobalKeyboardHook(true); // use false here to switch to hook instead of raw input
 
+		System.out.println("Global keyboard hook successfully started, press [escape] key to shutdown. Connected keyboards:");
+		for(Entry<Long,String> keyboard:GlobalKeyboardHook.listKeyboards().entrySet())
+			System.out.format("%d: %s\n", keyboard.getKey(), keyboard.getValue());
+		
+		keyboardHook.addKeyListener(new GlobalKeyAdapter() {
+			@Override public void keyPressed(GlobalKeyEvent event) {
+				if(event.getVirtualKeyCode()==GlobalKeyEvent.VK_ESCAPE) {
+					System.exit(0);
+				}
+
+			}
+		});
+		
+		
 		JFrame asktwo = new JFrame("1v1 or 2v2?");
+		asktwo.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		JLabel label = new JLabel("1v1 or 2v2?");
 		label.setLocation(60, 0);
 		label.setSize(200, 20);
@@ -33,6 +55,7 @@ public class Main {
 					e.printStackTrace();
 				}
 				bhhthread.showWindow();
+				asktwo.setVisible(false);
 			}
 			
 		});
@@ -54,6 +77,7 @@ public class Main {
 					e.printStackTrace();
 				}
 				bhhthread.showWindow();
+				asktwo.setVisible(false);
 			}
 			
 		});
