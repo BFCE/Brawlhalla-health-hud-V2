@@ -46,7 +46,7 @@ public class Main {
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
 				BHH bhhthread = new BHH();
-				bhhthread.setTwos(true);
+				bhhthread.setTwos(false);
 				bhhthread.start();
 				try {
 					Thread.sleep(50);

@@ -121,22 +121,6 @@ public class BHH extends Thread {
 		bhh.setVisible(true);
 	}
 
-	public void startExplorer() {
-		try {
-			Runtime.getRuntime().exec("explorer.exe");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-
-	public void stopExplorer() {
-		try {
-			Runtime.getRuntime().exec("taskkill /f /im explorer.exe");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-
 	public boolean isTwos() {
 		return twos;
 	}
