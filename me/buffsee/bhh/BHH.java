@@ -6,7 +6,6 @@ import java.awt.Font;
 import java.awt.Rectangle;
 import java.awt.Robot;
 import java.awt.Toolkit;
-import java.io.IOException;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
