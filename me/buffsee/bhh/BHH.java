@@ -37,9 +37,9 @@ public class BHH extends Thread {
 		
 		Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();
 		if(this.isTwos())
-			bhh.setLocation((int) (screensize.getWidth()) - bhh.getWidth(), (int) screensize.getHeight() / 5);
+			bhh.setLocation((int) ((screensize.getWidth())/1.01) - bhh.getWidth(), (int) screensize.getHeight() / 5);
 		else
-			bhh.setLocation((int) (screensize.getWidth()) - bhh.getWidth(), (int) screensize.getHeight() / 10);
+			bhh.setLocation((int) ((screensize.getWidth())/1.01) - bhh.getWidth(), (int) screensize.getHeight() / 10);
 		
 		bhh.setAlwaysOnTop(true);
 
@@ -65,17 +65,17 @@ public class BHH extends Thread {
 				if(this.isTwos()) {
 					String topleftbottomhealth = String.valueOf((int) this.getHealthFromPixel(0, 0, robot, screenRectBottomLeft));
 					String toprightbottomhealth = String.valueOf((int) this.getHealthFromPixel(0, 0, robot, screenRectBottomRight));
-					healthleft.setText("<html>" + toplefthealth + " | " + toprighthealth + " <br>" +
+					healthleft.setText("<html>" + toplefthealth + " | " + toprighthealth + "<br>" +
 					topleftbottomhealth  + " | " + toprightbottomhealth + "</br></html>");
 				} else
-					healthleft.setText(toplefthealth + " | " + toprighthealth + " ");
+					healthleft.setText("<html>" + toplefthealth + " | " + toprighthealth + " " + "</html>");
 				
 				
 				bhh.pack();
 				if(this.isTwos())
-					bhh.setLocation((int) (screensize.getWidth()) - bhh.getWidth(), (int) screensize.getHeight() / 5);
+					bhh.setLocation((int) ((screensize.getWidth())/1.01) - bhh.getWidth(), (int) screensize.getHeight() / 5);
 				else
-					bhh.setLocation((int) (screensize.getWidth()) - bhh.getWidth(), (int) screensize.getHeight() / 10);
+					bhh.setLocation((int) ((screensize.getWidth())/1.01) - bhh.getWidth(), (int) screensize.getHeight() / 10);
 
 			}
 			try {
