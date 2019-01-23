@@ -6,9 +6,9 @@ This ia a complete recode over the original Brawlhalla Health HUD (referred to a
 
 this version runs faster due to the replacement of `getPixelColor`, is coded much cleaner, has a nicer UI, and has native builds (compiled with Excelsior JET).
 
-![picture](1s.png)
+![picture](img/1s.png)
 
-![picture](2s.png)
+![picture](img/2s.png)
 
 ## The program is currently terminated with ESC, by caution, keyboard players. I'll probably try to change this to a different button like F2 in the future.
 
