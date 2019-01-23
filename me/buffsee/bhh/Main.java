@@ -8,9 +8,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 public class Main {
-
+	
 	public static void main(String[] args) {
-
 
 		JFrame asktwo = new JFrame("1v1 or 2v2?");
 		JLabel label = new JLabel("1v1 or 2v2?");
@@ -27,7 +26,13 @@ public class Main {
 				BHH bhhthread = new BHH();
 				bhhthread.setTwos(true);
 				bhhthread.start();
-				
+				try {
+					Thread.sleep(50);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				bhhthread.showWindow();
 			}
 			
 		});
@@ -42,6 +47,13 @@ public class Main {
 				BHH bhhthread = new BHH();
 				bhhthread.setTwos(true);
 				bhhthread.start();
+				try {
+					Thread.sleep(50);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				bhhthread.showWindow();
 			}
 			
 		});
@@ -62,7 +74,6 @@ public class Main {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 	}
 
 }
