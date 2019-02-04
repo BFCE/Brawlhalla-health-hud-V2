@@ -24,7 +24,7 @@ public class Main {
 		
 		keyboardHook.addKeyListener(new GlobalKeyAdapter() {
 			@Override public void keyPressed(GlobalKeyEvent event) {
-				if(event.getVirtualKeyCode()==GlobalKeyEvent.VK_ESCAPE) {
+				if(event.getVirtualKeyCode()==GlobalKeyEvent.VK_F2) {
 					System.exit(0);
 				}
 
