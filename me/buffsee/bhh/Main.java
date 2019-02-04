@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.util.Map.Entry;
 
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
@@ -37,6 +38,12 @@ public class Main {
 		JLabel label = new JLabel("1v1 or 2v2?");
 		label.setLocation(60, 0);
 		label.setSize(200, 20);
+		JCheckBox smash = new JCheckBox();
+		smash.setLocation(120, 53);
+		smash.setSize(25, 25);
+		JLabel smashlabel = new JLabel("Smash mode:");
+		smashlabel.setLocation(30, 54);
+		smashlabel.setSize(200, 20);
 		JButton one = new JButton("1v1");
 		one.setLocation(30, 30);
 		one.setSize(54, 20);
@@ -82,22 +89,18 @@ public class Main {
 			
 		});
 		asktwo.setLayout(null);
+		asktwo.add(smashlabel);
+		asktwo.add(smash);
 		asktwo.add(one);
 		asktwo.add(two);
 		asktwo.add(label);
-		asktwo.setSize(200, 100);
+		asktwo.setSize(200, 120);
 		asktwo.setLocationRelativeTo(null);
 		asktwo.setVisible(true);
 
 		
 		TaskbarHider taskbarhider = new TaskbarHider();
 		taskbarhider.hideTaskbar();
-		try {
-			Thread.sleep(1);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 
 }
