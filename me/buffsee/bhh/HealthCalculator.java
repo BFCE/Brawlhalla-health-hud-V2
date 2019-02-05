@@ -15,7 +15,7 @@ public class HealthCalculator {
 		Rectangle screenRectLeft = new Rectangle((int) (screensize.getWidth() / 1.1),
 				((int) screensize.getHeight() / 12) - 1, (int) (screensize.getWidth() / 1.1) + 1,
 				(int) screensize.getHeight() / 12);
-		String toplefthealth = String.valueOf((int) this.getHealthFromPixel(this.robot, screenRectLeft));
+		String toplefthealth = String.valueOf((int) this.getHealthFromPixel(screenRectLeft));
 		return toplefthealth;
 	}
 	
@@ -23,7 +23,7 @@ public class HealthCalculator {
 		Rectangle rect = new Rectangle((int) (screensize.getWidth() / 1.04),
 				((int) screensize.getHeight() / 12) - 1, (int) (screensize.getWidth() / 1.04) + 1,
 				(int) screensize.getHeight() / 12);
-		String health = String.valueOf((int) this.getHealthFromPixel(this.robot, rect));
+		String health = String.valueOf((int) this.getHealthFromPixel(rect));
 		return health;
 	}
 	
@@ -31,19 +31,49 @@ public class HealthCalculator {
 		Rectangle rect = new Rectangle((int) (screensize.getWidth() / 1.1),
 				(int) (screensize.getHeight() / 5.5) - 1, (int) (screensize.getWidth() / 1.1) + 1,
 				(int) (screensize.getHeight() / 5.5));
-		String health = String.valueOf((int) this.getHealthFromPixel(this.robot, rect));
+		String health = String.valueOf((int) this.getHealthFromPixel(rect));
 		return health;
 	}
 	
-	public String getBottomRightHealt() {
+	public String getBottomRightHealth() {
 		Rectangle rect = new Rectangle((int) (screensize.getWidth() / 1.04),
 				(int)(screensize.getHeight() / 5.5) - 1, (int) (screensize.getWidth() / 1.04) + 1,
 				(int) (screensize.getHeight() / 5.5));
-		String health = String.valueOf((int) this.getHealthFromPixel(this.robot, rect));
+		String health = String.valueOf((int) this.getHealthFromPixel(rect));
 		return health;
 	}
 	
-	private double getHealthFromColor(int[] tst) {
+	
+	public int[] getTopLeftColor() {
+		Rectangle rect = new Rectangle((int) (screensize.getWidth() / 1.1),
+				((int) screensize.getHeight() / 12) - 1, (int) (screensize.getWidth() / 1.1) + 1,
+				(int) screensize.getHeight() / 12);
+		return this.getRGBFromPixel(rect);
+	}
+	
+	public int[] getTopRightColor() {
+		Rectangle rect = new Rectangle((int) (screensize.getWidth() / 1.04),
+				((int) screensize.getHeight() / 12) - 1, (int) (screensize.getWidth() / 1.04) + 1,
+				(int) screensize.getHeight() / 12);
+		return this.getRGBFromPixel(rect);
+	}
+	
+	public int[] getBottomLeftColor() {
+		Rectangle rect = new Rectangle((int) (screensize.getWidth() / 1.1),
+				(int) (screensize.getHeight() / 5.5) - 1, (int) (screensize.getWidth() / 1.1) + 1,
+				(int) (screensize.getHeight() / 5.5));
+		return this.getRGBFromPixel(rect);
+	}
+	
+	public int[] getBottomRightColor() {
+		Rectangle rect = new Rectangle((int) (screensize.getWidth() / 1.04),
+				(int)(screensize.getHeight() / 5.5) - 1, (int) (screensize.getWidth() / 1.04) + 1,
+				(int) (screensize.getHeight() / 5.5));
+		return this.getRGBFromPixel(rect);
+	}
+	
+	
+	public double getHealthFromColor(int[] tst) {
 		double algorithm = (765 - (tst[0] + tst[1] + tst[2])) / 5;
 		if (algorithm >= 51)
 			algorithm = (609 - (tst[0] + tst[1] + tst[2])) / 2;
@@ -63,11 +93,18 @@ public class HealthCalculator {
 		return algorithm;
 	}
 
-	private double getHealthFromPixel(Robot robot, Rectangle rect) {
+	private double getHealthFromPixel(Rectangle rect) {
 		int tst[] = null;
 		tst = robot.createScreenCapture(rect).getData().getPixel(0, 0, tst);
 		
 		return this.getHealthFromColor(tst);
+	}
+	
+	private int[] getRGBFromPixel(Rectangle rect) {
+		int tst[] = null;
+		tst = robot.createScreenCapture(rect).getData().getPixel(0, 0, tst);
+		
+		return tst;
 	}
 
 	public void initRobot() {

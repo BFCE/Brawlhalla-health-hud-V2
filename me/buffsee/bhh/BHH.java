@@ -41,7 +41,7 @@ public class BHH extends Thread {
 				String toprighthealth = healthcalc.getTopRightHealth();
 				if(this.isTwos()) {
 					String leftbottomhealth = healthcalc.getBottomLeftHealth();
-					String rightbottomhealth = healthcalc.getBottomRightHealt();
+					String rightbottomhealth = healthcalc.getBottomRightHealth();
 					healthleft.setText("<html>" + toplefthealth + " | " + toprighthealth + "<br>" +
 					leftbottomhealth  + " | " + rightbottomhealth + "</br></html>");
 				} else

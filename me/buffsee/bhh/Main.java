@@ -55,12 +55,12 @@ public class Main {
 				if(smash.isSelected()) {
 					Smash smash = new Smash();
 					smash.setTwos(false);
-					smash.start();
+					smash.run();
 					asktwo.setVisible(false);
 				} else {
 					BHH bhhthread = new BHH();
 					bhhthread.setTwos(false);
-					bhhthread.start();
+					bhhthread.run();
 					try {
 						Thread.sleep(50);
 					} catch (InterruptedException e) {
