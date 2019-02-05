@@ -9,7 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
 public class BHH extends Thread {
-	public JFrame bhh = new JFrame("BHH");
+	private JFrame bhh = new JFrame("BHH");
 
 	private boolean twos = false;
 	

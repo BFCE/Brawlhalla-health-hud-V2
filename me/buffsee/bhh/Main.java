@@ -52,17 +52,24 @@ public class Main {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-				BHH bhhthread = new BHH();
-				bhhthread.setTwos(false);
-				bhhthread.start();
-				try {
-					Thread.sleep(50);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+				if(smash.isSelected()) {
+					Smash smash = new Smash();
+					smash.setTwos(false);
+					smash.start();
+					asktwo.setVisible(false);
+				} else {
+					BHH bhhthread = new BHH();
+					bhhthread.setTwos(false);
+					bhhthread.start();
+					try {
+						Thread.sleep(50);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					bhhthread.showWindow();
+					asktwo.setVisible(false);
 				}
-				bhhthread.showWindow();
-				asktwo.setVisible(false);
 			}
 			
 		});
@@ -74,19 +81,25 @@ public class Main {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-				BHH bhhthread = new BHH();
-				bhhthread.setTwos(true);
-				bhhthread.start();
-				try {
-					Thread.sleep(50);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				bhhthread.showWindow();
-				asktwo.setVisible(false);
+				if(smash.isSelected()) {
+					Smash smash = new Smash();
+					smash.setTwos(true);
+					smash.start(); //TODO: Replace these with run();
+					asktwo.setVisible(false);
+				} else {
+					BHH bhhthread = new BHH();
+					bhhthread.setTwos(true);
+					bhhthread.start();
+					try {
+						Thread.sleep(50);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					bhhthread.showWindow();
+					asktwo.setVisible(false);
 			}
-			
+			}
 		});
 		asktwo.setLayout(null);
 		asktwo.add(smashlabel);
