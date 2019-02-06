@@ -10,6 +10,14 @@ this version runs faster due to the replacement of `getPixelColor`, (now less th
 
 ![picture](img/2s.png)
 
+## BHH now supports a Smash bros inspired UI mode
+
+The native version is recommended over the Java version for smash mode, as the native Graphics2D properties behave the same as they do in my debugging tests in native, but not in Java, which results in a blurry image in Java (along with higher CPU usage)
+
+![picture](img/s1s.png)
+
+![picture](img/s2s.png)
+
 **How to use**
 
 1. Download the Java version if you have Java, or the native version if you don't. (the difference between them is minimal)
@@ -23,11 +31,13 @@ this version runs faster due to the replacement of `getPixelColor`, (now less th
 
 #[All-downloads](https://bitbucket.org/BFCEHF/brawlhalla-health-hud-v2.0/downloads/)
 
-#[Java-Download](https://bitbucket.org/BFCEHF/brawlhalla-health-hud-v2.0/downloads/BHH2.jar)
+#[Java-Download](https://bitbucket.org/BFCEHF/brawlhalla-health-hud-v2.0/downloads/BHH2.2.jar)
 
-#[Native-download](https://bitbucket.org/BFCEHF/brawlhalla-health-hud-v2.0/downloads/BHH2-native.7z)
+#[Native-download](https://bitbucket.org/BFCEHF/brawlhalla-health-hud-v2.0/downloads/BHH2.2-native.7z)
 
 
 #Contributions
 
 [kristian](https://github.com/kristian) for [system-hook](https://github.com/kristian/system-hook)
+
+[Sasjo](https://github.com/sasjo/) for [multiline](https://github.com/sasjo/multiline) 
