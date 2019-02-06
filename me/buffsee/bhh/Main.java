@@ -60,7 +60,7 @@ public class Main {
 				} else {
 					BHH bhhthread = new BHH();
 					bhhthread.setTwos(false);
-					bhhthread.run();
+					bhhthread.start();
 					try {
 						Thread.sleep(50);
 					} catch (InterruptedException e) {

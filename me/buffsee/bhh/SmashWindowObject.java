@@ -14,6 +14,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+import sas.swing.plaf.MultiLineShadowUI;
+
 public class SmashWindowObject {
 
 	public SmashWindowObject(String framename, Rectangle ponerect, int x, int y) {
@@ -22,13 +24,17 @@ public class SmashWindowObject {
 		
 		JLabel label = new JLabel("werg");
 		label.setFont(new Font("Verdana", Font.BOLD, 100));
+		label.setUI(MultiLineShadowUI.labelUI);
 		label.setForeground(new Color(255, 255, 255));
 
 		p1.add(label);
-
+		/*
+		 * TODO: make these toggble-able with a hotkey so the user can adjust them
+		 */
 		p1.setUndecorated(true);
 		p1.setOpacity(0.95f);
 		p1.setBackground(new Color(0, 0, 0, 0));
+		
 		p1.setAlwaysOnTop(true);
 		p1.setLocation(x, y);
 
@@ -54,6 +60,16 @@ public class SmashWindowObject {
 			}
 			if(framename.equals("p2")) {
 				int[] rgb = healthcalc.getTopRightColor();
+				label.setForeground(new Color(rgb[0], rgb[1], rgb[2]));
+				label.setText((int) healthcalc.getHealthFromColor(rgb) + "");
+			}
+			if(framename.equals("p3")) {
+				int[] rgb = healthcalc.getBottomLeftColor();
+				label.setForeground(new Color(rgb[0], rgb[1], rgb[2]));
+				label.setText((int) healthcalc.getHealthFromColor(rgb) + "");
+			}
+			if(framename.equals("p4")) {
+				int[] rgb = healthcalc.getBottomRightColor();
 				label.setForeground(new Color(rgb[0], rgb[1], rgb[2]));
 				label.setText((int) healthcalc.getHealthFromColor(rgb) + "");
 			}
