@@ -43,7 +43,9 @@ public class SmashWindowObject {
 		}
 		
 		HealthCalculator healthcalc = new HealthCalculator();
+		ImageRounder rounder = new ImageRounder();
 		healthcalc.initRobot();
+		
 		while (true) {
 			if(framename.equals("p1")) {
 				int[] rgb = healthcalc.getTopLeftColor();
@@ -55,7 +57,7 @@ public class SmashWindowObject {
 				label.setForeground(new Color(rgb[0], rgb[1], rgb[2]));
 				label.setText((int) healthcalc.getHealthFromColor(rgb) + "");
 			}
-			label.setIcon(new ImageIcon(this.getScaledImage(robot.createScreenCapture(ponerect))));
+			label.setIcon(new ImageIcon(rounder.getRoundedImage(this.getScaledImage(robot.createScreenCapture(ponerect)))));
 			p1.pack();
 			try {
 				Thread.sleep(250);

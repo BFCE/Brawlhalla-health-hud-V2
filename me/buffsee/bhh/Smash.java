@@ -27,11 +27,13 @@ public class Smash extends Thread {
 		if(twos) {
 			
 		} else {
-			Rectangle poneRect1 = new Rectangle(((int) (screensize.getWidth()/1.128)), 0, ((int) (screensize.getWidth()/20)), ((int) (screensize.getHeight()/10)));
+			int radius = ((int) (screensize.getWidth()/21.5));
+
+			Rectangle poneRect1 = new Rectangle(((int) (screensize.getWidth()/1.128)), ((int) (screensize.getHeight()/60)), radius, radius);
 			int x1 = (int) (screensize.getWidth() / 6),
 				y1 = (int) (screensize.getHeight() / 1.2);
 			
-			Rectangle poneRect2 = new Rectangle(((int) (screensize.getWidth()/1.068)), 0, ((int) (screensize.getWidth()/20)), ((int) (screensize.getHeight()/10)));
+			Rectangle poneRect2 = new Rectangle(((int) (screensize.getWidth()/1.066)), ((int) (screensize.getHeight()/60)), radius, radius);
 			int x2 = (int) (screensize.getWidth() / 1.3),
 				y2 = (int) (screensize.getHeight() / 1.2);
 			
