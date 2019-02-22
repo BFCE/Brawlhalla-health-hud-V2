@@ -8,7 +8,7 @@ This is an open-source Java application that can overlay the health of your oppo
 
 This ia a complete recode over the [original Brawlhalla Health HUD](https://bitbucket.org/BFCEHF/brawlhalla-health-hud/src/master/) (referred to as BHH from here on out), because the original was made very hastily, with an atrocious switch statement to get health from color, using the `getPixelColor` which is extremely slow in Java, and generally not being written with any kind of expandability in mind.
 
-this version runs faster due toC:\Users\bfce\Desktop the replacement of `getPixelColor`, (now less than 100MB at all times, less than 1% CPU on most machines) is coded much cleaner, has a nicer UI, and has native builds (compiled with Excelsior JET).
+this version runs faster due to the replacement of `getPixelColor`, (now less than 100MB at all times, less than 1% CPU on most machines) is coded much cleaner, has a nicer UI, and has native builds (compiled with Excelsior JET).
 
 ![picture](img/1s.png)
 
