@@ -20,6 +20,8 @@ public class SmashWindowObject {
 
 	public SmashWindowObject(String framename, Rectangle ponerect, int x, int y) {
 
+		final int playernumber = Integer.valueOf(framename.replace("p", ""));
+		
 		JFrame p1 = new JFrame(framename);
 		
 		JLabel label = new JLabel("werg");
@@ -33,7 +35,7 @@ public class SmashWindowObject {
 		 */
 		p1.setUndecorated(true);
 		p1.setOpacity(0.95f);
-		p1.setBackground(new Color(0, 0, 0, 0));
+		p1.setBackground(new Color(255, 255, 255, 0));
 		
 		p1.setAlwaysOnTop(true);
 		p1.setLocation(x, y);
@@ -53,22 +55,23 @@ public class SmashWindowObject {
 		healthcalc.initRobot();
 		
 		while (true) {
-			if(framename.equals("p1")) {
+			long systime = System.nanoTime();
+			if(playernumber == 1) {
 				int[] rgb = healthcalc.getTopLeftColor();
 				label.setForeground(new Color(rgb[0], rgb[1], rgb[2]));
 				label.setText((int) healthcalc.getHealthFromColor(rgb) + "");
 			}
-			if(framename.equals("p2")) {
+			if(playernumber == 2) {
 				int[] rgb = healthcalc.getTopRightColor();
 				label.setForeground(new Color(rgb[0], rgb[1], rgb[2]));
 				label.setText((int) healthcalc.getHealthFromColor(rgb) + "");
 			}
-			if(framename.equals("p3")) {
+			if(playernumber == 3) {
 				int[] rgb = healthcalc.getBottomLeftColor();
 				label.setForeground(new Color(rgb[0], rgb[1], rgb[2]));
 				label.setText((int) healthcalc.getHealthFromColor(rgb) + "");
 			}
-			if(framename.equals("p4")) {
+			if(playernumber == 4) {
 				int[] rgb = healthcalc.getBottomRightColor();
 				label.setForeground(new Color(rgb[0], rgb[1], rgb[2]));
 				label.setText((int) healthcalc.getHealthFromColor(rgb) + "");
@@ -76,7 +79,7 @@ public class SmashWindowObject {
 			label.setIcon(new ImageIcon(rounder.getRoundedImage(this.getScaledImage(robot.createScreenCapture(ponerect)))));
 			p1.pack();
 			try {
-				Thread.sleep(250);
+				Thread.sleep(400);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
