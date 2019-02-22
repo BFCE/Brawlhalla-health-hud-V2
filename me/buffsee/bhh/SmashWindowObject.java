@@ -25,7 +25,7 @@ public class SmashWindowObject {
 		JFrame p1 = new JFrame(framename);
 		
 		JLabel label = new JLabel("...");
-		label.setFont(new Font("Verdana", Font.BOLD, 100));
+		label.setFont(new Font("Verdana", Font.BOLD, 90));
 		label.setUI(MultiLineShadowUI.labelUI);
 		label.setForeground(new Color(255, 255, 255));
 
@@ -121,8 +121,8 @@ public class SmashWindowObject {
 	}
 	
 	private BufferedImage getScaledImage(Image srcImg) {
-		int w = (int) (srcImg.getWidth(null)*1.5);
-		int h = (int) (srcImg.getHeight(null)*1.5);
+		int w = (int) (srcImg.getWidth(null)*1.3);
+		int h = (int) (srcImg.getHeight(null)*1.3);
 	    BufferedImage resizedImg = new BufferedImage(w, h, BufferedImage.TRANSLUCENT);
 	    Graphics2D g2 = resizedImg.createGraphics();
 	    g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BICUBIC);
