@@ -54,38 +54,70 @@ public class SmashWindowObject {
 		ImageRounder rounder = new ImageRounder();
 		healthcalc.initRobot();
 		
-		while (true) {
-			long systime = System.nanoTime();
-			if(playernumber == 1) {
+		if(playernumber == 1) {
+			while(true) {
 				int[] rgb = healthcalc.getTopLeftColor();
 				label.setForeground(new Color(rgb[0], rgb[1], rgb[2]));
 				label.setText((int) healthcalc.getHealthFromColor(rgb) + "");
+				
+				label.setIcon(new ImageIcon(rounder.getRoundedImage(this.getScaledImage(robot.createScreenCapture(ponerect)))));
+				p1.pack();
+				try {
+					Thread.sleep(400);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
-			if(playernumber == 2) {
-				int[] rgb = healthcalc.getTopRightColor();
-				label.setForeground(new Color(rgb[0], rgb[1], rgb[2]));
-				label.setText((int) healthcalc.getHealthFromColor(rgb) + "");
+		}
+		if(playernumber == 2) {
+			while(true) {
+					int[] rgb = healthcalc.getTopRightColor();
+					label.setForeground(new Color(rgb[0], rgb[1], rgb[2]));
+					label.setText((int) healthcalc.getHealthFromColor(rgb) + "");
+					
+					label.setIcon(new ImageIcon(rounder.getRoundedImage(this.getScaledImage(robot.createScreenCapture(ponerect)))));
+					p1.pack();
+					try {
+						Thread.sleep(400);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 			}
-			if(playernumber == 3) {
+		}
+		if(playernumber == 3) {
+			while(true) {
 				int[] rgb = healthcalc.getBottomLeftColor();
 				label.setForeground(new Color(rgb[0], rgb[1], rgb[2]));
 				label.setText((int) healthcalc.getHealthFromColor(rgb) + "");
+				
+				label.setIcon(new ImageIcon(rounder.getRoundedImage(this.getScaledImage(robot.createScreenCapture(ponerect)))));
+				p1.pack();
+				try {
+					Thread.sleep(400);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
-			if(playernumber == 4) {
+		}
+		if(playernumber == 4) {
+			while(true) {
 				int[] rgb = healthcalc.getBottomRightColor();
 				label.setForeground(new Color(rgb[0], rgb[1], rgb[2]));
 				label.setText((int) healthcalc.getHealthFromColor(rgb) + "");
-			}
-			label.setIcon(new ImageIcon(rounder.getRoundedImage(this.getScaledImage(robot.createScreenCapture(ponerect)))));
-			p1.pack();
-			try {
-				Thread.sleep(400);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				
+				label.setIcon(new ImageIcon(rounder.getRoundedImage(this.getScaledImage(robot.createScreenCapture(ponerect)))));
+				p1.pack();
+				try {
+					Thread.sleep(400);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		}
-
 	}
 	
 	private BufferedImage getScaledImage(Image srcImg) {
