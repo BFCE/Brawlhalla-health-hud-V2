@@ -24,7 +24,7 @@ public class SmashWindowObject {
 		
 		JFrame p1 = new JFrame(framename);
 		
-		JLabel label = new JLabel("werg");
+		JLabel label = new JLabel("...");
 		label.setFont(new Font("Verdana", Font.BOLD, 100));
 		label.setUI(MultiLineShadowUI.labelUI);
 		label.setForeground(new Color(255, 255, 255));
@@ -39,9 +39,11 @@ public class SmashWindowObject {
 		
 		p1.setAlwaysOnTop(true);
 		p1.setLocation(x, y);
-
-		p1.setVisible(true);
 		
+		p1.pack();
+		p1.setSize(p1.getWidth()*5, (int) (p1.getHeight()*1.5));
+		
+		p1.setVisible(true);
 		Robot robot = null;
 		try {
 			robot = new Robot();
@@ -61,7 +63,7 @@ public class SmashWindowObject {
 				label.setText((int) healthcalc.getHealthFromColor(rgb) + "");
 				
 				label.setIcon(new ImageIcon(rounder.getRoundedImage(this.getScaledImage(robot.createScreenCapture(ponerect)))));
-				p1.pack();
+//				p1.pack();
 				try {
 					Thread.sleep(400);
 				} catch (InterruptedException e) {
@@ -77,7 +79,6 @@ public class SmashWindowObject {
 					label.setText((int) healthcalc.getHealthFromColor(rgb) + "");
 					
 					label.setIcon(new ImageIcon(rounder.getRoundedImage(this.getScaledImage(robot.createScreenCapture(ponerect)))));
-					p1.pack();
 					try {
 						Thread.sleep(400);
 					} catch (InterruptedException e) {
@@ -93,7 +94,6 @@ public class SmashWindowObject {
 				label.setText((int) healthcalc.getHealthFromColor(rgb) + "");
 				
 				label.setIcon(new ImageIcon(rounder.getRoundedImage(this.getScaledImage(robot.createScreenCapture(ponerect)))));
-				p1.pack();
 				try {
 					Thread.sleep(400);
 				} catch (InterruptedException e) {
@@ -109,7 +109,7 @@ public class SmashWindowObject {
 				label.setText((int) healthcalc.getHealthFromColor(rgb) + "");
 				
 				label.setIcon(new ImageIcon(rounder.getRoundedImage(this.getScaledImage(robot.createScreenCapture(ponerect)))));
-				p1.pack();
+//				p1.pack();
 				try {
 					Thread.sleep(400);
 				} catch (InterruptedException e) {
