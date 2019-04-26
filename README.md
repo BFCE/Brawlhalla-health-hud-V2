@@ -26,14 +26,6 @@ this version runs faster due to the replacement of `getPixelColor`, (now less th
 
 ***this program may not work if Brawlhalla is in windowed mode.***
 
-
-#[All-downloads](https://bitbucket.org/BFCEHF/brawlhalla-health-hud-v2.0/downloads/)
-
-#[Java-Download](https://bitbucket.org/BFCEHF/brawlhalla-health-hud-v2.0/downloads/BHH2.2.jar)
-
-#[Native-download](https://bitbucket.org/BFCEHF/brawlhalla-health-hud-v2.0/downloads/BHH2.2-native.7z)
-
-
 #Contributions
 
 [kristian](https://github.com/kristian) for [system-hook](https://github.com/kristian/system-hook)
