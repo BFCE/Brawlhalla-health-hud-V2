@@ -26,7 +26,7 @@ this version runs faster due to the replacement of `getPixelColor`, (now less th
 
 ***this program may not work if Brawlhalla is in windowed mode.***
 
-#Contributions
+# Contributions
 
 [kristian](https://github.com/kristian) for [system-hook](https://github.com/kristian/system-hook)
 
