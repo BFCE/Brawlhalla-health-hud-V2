@@ -11,6 +11,8 @@ public class HealthCalculator {
 	private final Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();
 	private Robot robot = null;
 	
+	
+	
 	public String getTopLeftHealth() {
 		Rectangle screenRectLeft = new Rectangle((int) (screensize.getWidth() / 1.1),
 				((int) screensize.getHeight() / 12) - 1, (int) (screensize.getWidth() / 1.1) + 1,
