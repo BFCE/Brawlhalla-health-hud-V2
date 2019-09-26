@@ -2,6 +2,8 @@ package me.buffsee.bhh;
 
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.MouseInfo;
+import java.awt.Robot;
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
@@ -10,7 +12,9 @@ import javax.swing.SwingConstants;
 
 public class BHH extends Thread {
 	private JFrame bhh = new JFrame("BHH");
-
+	Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();
+	private int x = (int) (((screensize.getWidth())/1.01) - bhh.getWidth());
+	private int y = (int) screensize.getHeight() / 5;
 	private boolean twos = false;
 	
 	@Override
@@ -23,20 +27,25 @@ public class BHH extends Thread {
 		bhh.setOpacity(0.8f);
 		bhh.setSize(300, 50);
 		
-		Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();
-		if(this.isTwos())
-			bhh.setLocation((int) ((screensize.getWidth())/1.01) - bhh.getWidth(), (int) screensize.getHeight() / 5);
-		else
-			bhh.setLocation((int) ((screensize.getWidth())/1.01) - bhh.getWidth(), (int) screensize.getHeight() / 10);
-		
+		if(this.isTwos()) {
+			x = (int) ((screensize.getWidth())/1.01) - bhh.getWidth();
+			y = (int) screensize.getHeight() / 5;
+		} else {
+			x = (int) ((screensize.getWidth())/1.01) - bhh.getWidth();
+			y = (int) screensize.getHeight() / 10;
+		}
+		bhh.setLocation(x, y);
 		bhh.setAlwaysOnTop(true);
 		
 		HealthCalculator healthcalc = new HealthCalculator();
 		healthcalc.initRobot();
 		
-		
 		while (true) {
 			if (bhh.isVisible()) {
+				if(Main.alt && Main.control && Main.shift) {
+					x = MouseInfo.getPointerInfo().getLocation().x-250;
+					y = MouseInfo.getPointerInfo().getLocation().y;
+				}
 				String toplefthealth = healthcalc.getTopLeftHealth();
 				String toprighthealth = healthcalc.getTopRightHealth();
 				if(this.isTwos()) {
@@ -50,13 +59,14 @@ public class BHH extends Thread {
 				
 				bhh.pack();
 				if(this.isTwos())
-					bhh.setLocation((int) ((screensize.getWidth())/1.01) - bhh.getWidth(), (int) screensize.getHeight() / 5);
+					bhh.setLocation(x + 250 - bhh.getWidth(), y);
 				else
-					bhh.setLocation((int) ((screensize.getWidth())/1.01) - bhh.getWidth(), (int) screensize.getHeight() / 10);
+					bhh.setLocation(x + 250 - bhh.getWidth(), y);
 
 			}
 			try {
-				Thread.sleep(200);
+				if(!(Main.alt && Main.control && Main.shift)) 
+					Thread.sleep(100);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

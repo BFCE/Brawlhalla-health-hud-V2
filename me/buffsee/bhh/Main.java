@@ -15,6 +15,10 @@ import lc.kra.system.keyboard.event.GlobalKeyEvent;
 
 public class Main {
 	
+	static boolean shift = false;
+	static boolean control = false;
+	static boolean alt = false;
+	
 	public static void main(String[] args) {
 		// might throw a UnsatisfiedLinkError if the native library fails to load or a RuntimeException if hooking fails 
 		GlobalKeyboardHook keyboardHook = new GlobalKeyboardHook(true); // use false here to switch to hook instead of raw input
@@ -24,11 +28,40 @@ public class Main {
 			System.out.format("%d: %s\n", keyboard.getKey(), keyboard.getValue());
 		
 		keyboardHook.addKeyListener(new GlobalKeyAdapter() {
+			
 			@Override public void keyPressed(GlobalKeyEvent event) {
 				if(event.getVirtualKeyCode()==GlobalKeyEvent.VK_F2) {
 					System.exit(0);
 				}
+				if(event.getVirtualKeyCode()==GlobalKeyEvent.VK_SHIFT) {
+					shift = true;
+//					System.out.println("shift true");
+				}
+				if(event.getVirtualKeyCode()==GlobalKeyEvent.VK_CONTROL) {
+					control = true;
+//					System.out.println("control true");
+				}
+				if(event.getVirtualKeyCode()==GlobalKeyEvent.VK_MENU) {
+					alt = true;
+//					System.out.println("alt true");
+				}
 
+			}
+			
+			@Override
+			public void keyReleased(GlobalKeyEvent event) {
+				if(event.getVirtualKeyCode()==GlobalKeyEvent.VK_SHIFT) {
+					shift = false;
+//					System.out.println("shift flase");
+				}
+				if(event.getVirtualKeyCode()==GlobalKeyEvent.VK_CONTROL) {
+					control = false;
+//					System.out.println("control false");
+				}
+				if(event.getVirtualKeyCode()==GlobalKeyEvent.VK_MENU) {
+					alt = false;
+//					System.out.println("alt flase");
+				}
 			}
 		});
 		
