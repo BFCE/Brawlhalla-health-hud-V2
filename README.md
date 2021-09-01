@@ -28,7 +28,9 @@ this version runs faster due to the replacement of `getPixelColor`, (now less th
 * SHIFT+CTRL+ALT - move health window with mouse
 
 ## Linux and MacOS Compatibility
-System-hook doesn't provide binaries for the system-hook's native. You can compile them yourself, or use -systemhook=0 as a launch argument (will prevent keybinds from working)
+System-hook doesn't provide binaries for the system-hook's native. You can compile them yourself, or use systemhook=0 as a launch argument (will prevent keybinds from working)
+
+> java -jar BHH24.jar systemhook=0
 
 ***this program may not work if Brawlhalla is in windowed mode.***
 
