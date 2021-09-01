@@ -23,11 +23,11 @@ this version runs faster due to the replacement of `getPixelColor`, (now less th
 3. Open it
 4. Press F2 to close it.
 
-##Keybinds
+## Keybinds
 * F2 - close
 * SHIFT+CTRL+ALT - move health window with mouse
 
-##Linux and MacOS Compatibility
+## Linux and MacOS Compatibility
 System-hook doesn't provide binaries for the system-hook's native. You can compile them yourself, or use -systemhook=0 as a launch argument (will prevent keybinds from working)
 
 ***this program may not work if Brawlhalla is in windowed mode.***
