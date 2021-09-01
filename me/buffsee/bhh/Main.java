@@ -20,52 +20,61 @@ public class Main {
 	static boolean alt = false;
 	
 	public static void main(String[] args) {
-		// might throw a UnsatisfiedLinkError if the native library fails to load or a RuntimeException if hooking fails 
-		GlobalKeyboardHook keyboardHook = new GlobalKeyboardHook(true); // use false here to switch to hook instead of raw input
-
-		System.out.println("Global keyboard hook successfully started, press [escape] key to shutdown. Connected keyboards:");
-		for(Entry<Long,String> keyboard:GlobalKeyboardHook.listKeyboards().entrySet())
-			System.out.format("%d: %s\n", keyboard.getKey(), keyboard.getValue());
-		
-		keyboardHook.addKeyListener(new GlobalKeyAdapter() {
-			
-			@Override public void keyPressed(GlobalKeyEvent event) {
-				if(event.getVirtualKeyCode()==GlobalKeyEvent.VK_F2) {
-					System.exit(0);
-				}
-				if(event.getVirtualKeyCode()==GlobalKeyEvent.VK_SHIFT) {
-					shift = true;
-//					System.out.println("shift true");
-				}
-				if(event.getVirtualKeyCode()==GlobalKeyEvent.VK_CONTROL) {
-					control = true;
-//					System.out.println("control true");
-				}
-				if(event.getVirtualKeyCode()==GlobalKeyEvent.VK_MENU) {
-					alt = true;
-//					System.out.println("alt true");
-				}
-
+		boolean hook = true;
+		if(args.length > 0) {
+			if(args[0].equalsIgnoreCase("systemhook=0")) {
+				hook = false;
 			}
+		}
+		if(hook) {
+			// might throw a UnsatisfiedLinkError if the native library fails to load or a RuntimeException if hooking fails 
+			GlobalKeyboardHook keyboardHook = new GlobalKeyboardHook(true); // use false here to switch to hook instead of raw input
+	
+			System.out.println("Global keyboard hook successfully started, press [escape] key to shutdown. Connected keyboards:");
+			for(Entry<Long,String> keyboard:GlobalKeyboardHook.listKeyboards().entrySet())
+				System.out.format("%d: %s\n", keyboard.getKey(), keyboard.getValue());
 			
-			@Override
-			public void keyReleased(GlobalKeyEvent event) {
-				if(event.getVirtualKeyCode()==GlobalKeyEvent.VK_SHIFT) {
-					shift = false;
-//					System.out.println("shift flase");
+			keyboardHook.addKeyListener(new GlobalKeyAdapter() {
+				
+				@Override public void keyPressed(GlobalKeyEvent event) {
+					if(event.getVirtualKeyCode()==GlobalKeyEvent.VK_F2) {
+						System.exit(0);
+					}
+					if(event.getVirtualKeyCode()==GlobalKeyEvent.VK_SHIFT) {
+						shift = true;
+	//					System.out.println("shift true");
+					}
+					if(event.getVirtualKeyCode()==GlobalKeyEvent.VK_CONTROL) {
+						control = true;
+	//					System.out.println("control true");
+					}
+					if(event.getVirtualKeyCode()==GlobalKeyEvent.VK_MENU) {
+						alt = true;
+	//					System.out.println("alt true");
+					}
+	
 				}
-				if(event.getVirtualKeyCode()==GlobalKeyEvent.VK_CONTROL) {
-					control = false;
-//					System.out.println("control false");
+				
+				@Override
+				public void keyReleased(GlobalKeyEvent event) {
+					if(event.getVirtualKeyCode()==GlobalKeyEvent.VK_SHIFT) {
+						shift = false;
+	//					System.out.println("shift flase");
+					}
+					if(event.getVirtualKeyCode()==GlobalKeyEvent.VK_CONTROL) {
+						control = false;
+	//					System.out.println("control false");
+					}
+					if(event.getVirtualKeyCode()==GlobalKeyEvent.VK_MENU) {
+						alt = false;
+	//					System.out.println("alt flase");
+					}
 				}
-				if(event.getVirtualKeyCode()==GlobalKeyEvent.VK_MENU) {
-					alt = false;
-//					System.out.println("alt flase");
-				}
-			}
-		});
+			});
 		
-		
+		} else {
+			System.out.println("System hook skipped. This means keybinds (F2 to exit, ctrl+shift+alt to move windows) will not work. May need task manager to kill.");
+		}
 		JFrame asktwo = new JFrame("1v1 or 2v2?");
 		asktwo.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		JLabel label = new JLabel("1v1 or 2v2?");

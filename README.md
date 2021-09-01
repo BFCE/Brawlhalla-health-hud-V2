@@ -1,6 +1,6 @@
 # Brawlhalla Health HUD v2.0
 
-## Use Java 8 or older for optimal experience
+## Use Java 8 or older for optimal experience (newer versions still work but slower)
 
 This is an open-source Java application that can overlay the health of your opponents onto your screen. Since dll injection in Java isn't really a thing, it achieves this by making itself an "always on top" window, and tricking windows into thinking a fullscreen application is on the top.
 
@@ -23,6 +23,12 @@ this version runs faster due to the replacement of `getPixelColor`, (now less th
 3. Open it
 4. Press F2 to close it.
 
+##Keybinds
+* F2 - close
+* SHIFT+CTRL+ALT - move health window with mouse
+
+##Linux and MacOS Compatibility
+System-hook doesn't provide binaries for the system-hook's native. You can compile them yourself, or use -systemhook=0 as a launch argument (will prevent keybinds from working)
 
 ***this program may not work if Brawlhalla is in windowed mode.***
 
