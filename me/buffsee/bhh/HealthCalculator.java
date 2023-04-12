@@ -76,21 +76,35 @@ public class HealthCalculator {
 	
 	
 	public double getHealthFromColor(int[] tst) {
-		double algorithm = (765 - (tst[0] + tst[1] + tst[2])) / 5;
+		//double algorithm = (765 - (tst[0] + tst[1] + tst[2])) / 5;
+		double algorithm = (255 + 255 + ( 255 - ( 255 * tst[2]) / 50 ) );
+		
 		if (algorithm >= 51)
-			algorithm = (609 - (tst[0] + tst[1] + tst[2])) / 2;
-
+			
+			//algorithm = (609 - (tst[0] + tst[1] + tst[2])) / 2;
+			algorithm = (255 + ( 255 - 102 * ( tst[1] - 50 ) / 50) + 0);
+		
 		if (algorithm > 100)
-			algorithm = (707 - (tst[0] + tst[1] + tst[2])) / 3;
-
+			
+			//algorithm = (707 - (tst[0] + tst[1] + tst[2])) / 3;
+			algorithm = (255 + ( 153 - 153 * ( tst[1] - 100 ) / 50) + 0);
+			
 		if (algorithm > 150)
-			algorithm = 345.802 - (((tst[0] + tst[1] + tst[2])) / 0.655) / 2;
+			
+			//algorithm = 345.802 - (((tst[0] + tst[1] + tst[2])) / 0.655) / 2;
+			algorithm = (( 255 - 64 * ( tst[0] - 150 ) / 50) + 0 + 0);
 
-		if (algorithm > 201) {
-			algorithm = 390 - (tst[0] + tst[1] + tst[2]);
+		if (algorithm > 201)
+			
+			//algorithm = 390 - (tst[0] + tst[1] + tst[2]);
+			algorithm = (( 191 - 51 * ( tst[0] - 200 ) / 50) + 0 + 0);
+			
 		}
 		if (algorithm > 251) {
-			algorithm = 357.1 - (tst[0] + tst[1] + tst[2]) * 0.7692307692307692;
+			
+			//algorithm = 357.1 - (tst[0] + tst[1] + tst[2]) * 0.7692307692307692;
+			algorithm = (( 140 - 66 * ( tst[0] - 250 ) / 50) + 0 + 0);
+			
 		}
 		return algorithm;
 	}
